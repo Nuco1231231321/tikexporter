@@ -3,13 +3,172 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TikExporter — anonymous TikTok viewer and comment exporter</title>
-<meta name="description" content="Watch public TikTok profiles, videos, Stories and reposts without an account, and export public comments to CSV.">
+<title>TikExporter — watch public TikTok without an account, export comments to CSV</title>
+<meta name="description" content="Open public TikTok profiles, videos, Stories and reposts without an account, read the comment thread, and export public comments to CSV with usernames, text, likes, replies and timestamps.">
+<link rel="canonical" href="https://nuco1231231321.github.io/tikexporter/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TikExporter — anonymous TikTok viewer and comment exporter">
+<meta property="og:description" content="Public TikTok content in the browser, no account. Comments export to CSV with usernames, text, likes, replies and timestamps.">
+<meta property="og:url" content="https://nuco1231231321.github.io/tikexporter/">
+<style>
+  :root {
+    --ink: #101828;
+    --muted: #475467;
+    --line: #e4e7ec;
+    --bg: #fbfaf7;
+    --accent: #0f766e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { border-bottom: 1px solid var(--line); }
+  header .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding-top: 16px; padding-bottom: 16px;
+  }
+  .brand { font-weight: 700; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+  .top-link {
+    background: var(--ink); color: #fff; text-decoration: none;
+    font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px;
+  }
+  h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    line-height: 1.08; letter-spacing: -0.03em;
+    margin: 48px 0 16px;
+  }
+  .lead { font-size: 1.125rem; color: var(--muted); margin: 0 0 28px; }
+  h2 { font-size: 1.35rem; line-height: 1.3; letter-spacing: -0.01em; margin: 44px 0 12px; }
+  h3 { font-size: 1.05rem; margin: 26px 0 8px; }
+  p { margin: 0 0 14px; }
+  ul, ol { margin: 0 0 16px; padding-left: 1.3rem; }
+  li { margin: 6px 0; }
+  a { color: var(--accent); }
+  .btn {
+    display: inline-block; background: var(--accent); color: #fff;
+    text-decoration: none; font-weight: 600; padding: 12px 20px;
+    border-radius: 10px; margin: 8px 0 4px;
+  }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 14px;
+    padding: 20px 22px; margin: 20px 0;
+  }
+  .card h2 { margin-top: 0; font-size: 1.15rem; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.88em; background: #f2f4f7; padding: 2px 6px; border-radius: 6px;
+  }
+  pre {
+    background: #101828; color: #e6edf3; padding: 16px;
+    border-radius: 12px; overflow-x: auto; font-size: 13px; line-height: 1.55;
+  }
+  pre code { background: none; padding: 0; color: inherit; }
+  .faq { margin: 0; }
+  .faq dt { font-weight: 600; margin-top: 20px; }
+  .faq dd { margin: 6px 0 0; color: var(--muted); }
+  .note { font-size: 14px; color: var(--muted); }
+  footer {
+    border-top: 1px solid var(--line); margin-top: 56px;
+    padding: 26px 0 48px; color: var(--muted); font-size: 14px;
+  }
+  footer p { margin: 0 0 8px; }
+  footer a { color: var(--muted); }
+</style>
 </head>
 <body>
-<h1>TikExporter</h1>
-<p>TikExporter is a browser-based viewer for public TikTok content. Open a profile, video, Story, repost or LIVE without an account, read the comment thread, and export public comments to CSV.</p>
-<p>Viewing is free. Comment export includes a free allowance, and larger batches use prepaid credits.</p>
-<p><a href="https://tikexporter.com">Open TikExporter</a></p>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="https://tikexporter.com">TikExporter</a>
+    <a class="top-link" href="https://tikexporter.com">Open the viewer</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Watch public TikTok without an account, and export comments to CSV</h1>
+  <p class="lead">TikExporter is a browser-based viewer for public TikTok content. Paste a profile or video link, read the thread, and download the comments as a spreadsheet. No app, no TikTok login, and no profile view from this viewer.</p>
+  <a class="btn" href="https://tikexporter.com">Open TikExporter</a>
+
+  <h2>What you can open</h2>
+  <ul>
+    <li>Public profiles and their video lists</li>
+    <li>Individual videos, including shared links</li>
+    <li>Stories and reposts that TikTok shows to visitors</li>
+    <li>Public LIVEs</li>
+    <li>Comment threads on public videos, with replies</li>
+  </ul>
+  <p>Everything renders in the browser. There is no desktop program, no extension, and no account to create before you can look at a public page.</p>
+
+  <h2>How to export comments to CSV</h2>
+  <ol>
+    <li>Copy a public video link, or type the creator's username.</li>
+    <li>Open the video and load its comment thread.</li>
+    <li>Choose the number of comments you need and start the export.</li>
+    <li>The browser downloads a <code>.csv</code> file that opens in Excel, Google Sheets, Numbers or a database import.</li>
+  </ol>
+  <p>If you only want to read a thread, you do not need to export anything. Viewing is free and the export step is optional.</p>
+
+  <div class="card">
+    <h2>What the CSV contains</h2>
+    <p>One row per comment, with a header row and UTF-8 encoding:</p>
+    <pre><code>comment_id,parent_comment_id,is_reply,video_id,username,nickname,user_id,text,likes,reply_count,created_at</code></pre>
+    <p class="note">Replies keep the id of the comment they answer, so a thread can be rebuilt in a spreadsheet. A timestamp is included for time-based analysis.</p>
+  </div>
+
+  <h2>Free and paid</h2>
+  <p>Viewing is free. Comment export includes a free allowance: 50 rows per video and 200 rows per month. Larger batches use prepaid credits, and a subscription is optional rather than required.</p>
+  <p>There is a small sample file if you want to see the format before exporting: <a href="https://tikexporter.com/sample-comments.csv">sample-comments.csv</a>.</p>
+
+  <h2>Limits, stated plainly</h2>
+  <ul>
+    <li>Public content only. Private accounts, friends-only videos and deleted posts cannot be opened.</li>
+    <li>No TikTok login, no posting, no liking, no direct messages.</li>
+    <li>Comments that TikTok does not show to logged-out visitors are not included.</li>
+    <li>TikTok changes its pages regularly, so a page or an export can break until it is fixed.</li>
+    <li>TikExporter is independent and not affiliated with TikTok or ByteDance.</li>
+  </ul>
+
+  <h2>Questions</h2>
+  <dl class="faq">
+    <dt>Do I need a TikTok account?</dt>
+    <dd>No. The viewer reads public pages that TikTok serves to any visitor. You never enter TikTok credentials.</dd>
+
+    <dt>Can I export comments from a private video?</dt>
+    <dd>No. If TikTok does not show the video or its comments to a logged-out visitor, TikExporter cannot read them.</dd>
+
+    <dt>How many comments can I export for free?</dt>
+    <dd>50 rows per video and 200 rows per month. Larger batches use prepaid credits.</dd>
+
+    <dt>Does the creator see that I watched?</dt>
+    <dd>The viewer does not sign in to TikTok and does not report a profile view. The page request itself is a normal request for public content.</dd>
+
+    <dt>Why did an export fail?</dt>
+    <dd>Usually because TikTok changed the page or rate-limited the request. Reload the video and try again; persistent failures are worth reporting.</dd>
+
+    <dt>Where do the comments go?</dt>
+    <dd>Into a CSV file on your device. Saved lists stay in your browser's local storage on the main site.</dd>
+  </dl>
+
+  <h2>More from TikExporter</h2>
+  <ul>
+    <li><a href="https://tikexporter.com/tiktok-comment-viewer">TikTok comment viewer</a></li>
+    <li><a href="https://tikexporter.com/tiktok-comment-exporter">TikTok comment exporter</a></li>
+    <li><a href="https://tikexporter.com/tiktok-story-viewer">TikTok Story viewer</a></li>
+    <li><a href="https://tikexporter.com/pricing">Pricing and export packs</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>TikExporter</strong> — an independent viewer for public TikTok content. Not affiliated with TikTok or ByteDance.</p>
+    <p>This page is a short product overview. The working tool is at <a href="https://tikexporter.com">tikexporter.com</a>. Last updated 2026-11-24.</p>
+  </div>
+</footer>
+
 </body>
 </html>
